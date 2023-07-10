@@ -9,9 +9,9 @@
 <body>
     <nav>
         
-        <a href="/">Home</a>
+        <a href="/home">Home</a>
         <% if (user) { %>
-          <a href="/">Grocery List</a>
+          <a href="/list/all">My Lists</a>
           <a href="/logout">Log Out</a>
           <% } else { %>
             <a href="/auth/google" class="login">Log In</a>

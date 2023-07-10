@@ -1,5 +1,11 @@
 <%- include('./partials/header') %>
 
-<h1>Home Page</h1>
+<% if (user) { %>
+    <h1>Welcome <%= user.name %></h1>
+    <a href="/logout">Log Out</a>
+<% } else { %>
+    <h1>Welcome Guest</h1>
+    <a href="/auth/google" class="login">Log In</a>
+<% } %>
 
 <%- include('./partials/footer') %>
