@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 
 const GroceryListSchema = new mongoose.Schema({
     title: String,
-    description: String,
     owner: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User' // Reference the User model
