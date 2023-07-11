@@ -2,6 +2,7 @@ const List = require('../models/GroceryList');
 
 module.exports = {
     allUserList,
+    new: newlist,
 };
 
 async function allUserList(req, res) {
@@ -10,7 +11,7 @@ async function allUserList(req, res) {
     if (user) {
         console.log('user->', user);
         const allUserGrocceryLists = await List.find({ owner: user._id });
-        res.render('lists/index', { title: 'All Lists', lists: allUserGrocceryLists });  
+        res.render('lists/index', { title: 'My Lists', lists: allUserGrocceryLists });  
     } else {
         console.log('not logged in');
         res.redirect('/');
@@ -19,6 +20,6 @@ async function allUserList(req, res) {
 
 // new list page
 function newlist(req, res) {
-    res.render('lists/new', { title: 'Add List' });
+    res.render('lists/new', { title: 'Create List' });
 }
 

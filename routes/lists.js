@@ -4,8 +4,8 @@ const listsCtrl = require('../controllers/lists');
 // render all lists
 router.get('/', listsCtrl.allUserList);
 
-// // GET /lists/new
-// router.get('/new', listsCtrl.new);
+// GET /lists/new
+router.get('/new', listsCtrl.new);
 
 // // POST /lists
 // router.post('/', listsCtrl.create);
