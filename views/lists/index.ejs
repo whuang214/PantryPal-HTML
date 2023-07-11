@@ -1,0 +1,16 @@
+<%- include('../partials/header') %>
+
+<h1>List Page</h1>
+
+<% if (lists.length > 0) { %>
+    <h2>All Lists:</h2>
+    <ul>
+        <% lists.forEach(function(list) { %>
+            <li><a href="/list/<%= list.id %>"><%= list.name %></a></li>
+        <% }); %>
+    </ul>
+<% } else { %>
+    <p>No lists found.</p>
+<% } %>
+
+<%- include('../partials/footer') %>
