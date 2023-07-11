@@ -26,10 +26,6 @@ body {
   width: 80vmin;
 }
 
-.add-list-button {
-  margin-left: 2vmin;
-}
-
 .list-container {
   display: flex;
   flex-direction: column;
@@ -90,7 +86,8 @@ body {
   font-size: 1.4vmin;
 }
 
-.add-list-button {
+.add-button {
+  margin-left: 2vmin;
   padding: 0.8vmin 1.6vmin;
   background-color: #fff;
   color: #333;
@@ -101,12 +98,10 @@ body {
   transition: background-color 0.3s ease;
 }
 
-.add-list-button:hover {
+.add-button:hover {
   background-color: #333;
   color: #fff;
 }
-
-
 
 /* form styles */
 .form-group {

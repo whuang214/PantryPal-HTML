@@ -1,0 +1,23 @@
+<%- include('../partials/header') %>
+
+<div class="center-container">
+    <div class="title-container">
+        <h3>Items Database</h3>
+        <a href="/items/new" class="add-button">Create Item</a>
+    </div>
+
+    <div class="items-container">
+        <% items.forEach(function(item) { %>
+            <div class="item">
+                <h2><%= item._id %></h2>
+                <p>Grocery List ID: <%= item.groceryList %></p>
+                <p>Checked: <%= item.isChecked ? 'Yes' : 'No' %></p>
+                <p>Quantity: <%= item.quantity %></p>
+                <p>Category: <%= item.category ? item.category : 'N/A' %></p>
+                <p>Price: <%= item.price ? item.price : 'N/A' %></p>
+            </div>
+        <% }); %>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>
