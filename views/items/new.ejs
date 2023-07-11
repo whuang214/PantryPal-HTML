@@ -1,7 +1,47 @@
 <%- include('../partials/header') %>
 
 <div class="center-container">
-    <h1>Add new item to database</h1>
+    <h3>Add an Item</h3>
+    <div class="list-container">
+        <form action="/items/create" method="POST">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name">
+            </div>
+            <div class="form-group">
+                <label for="category">Category</label>
+                <select id="category" name="category">
+                    <option value="" disabled selected>Select a category</option>
+                    <option value="Fruits and Vegetables">Fruits and Vegetables</option>
+                    <option value="Dairy and Eggs">Dairy and Eggs</option>
+                    <option value="Meat and Poultry">Meat and Poultry</option>
+                    <option value="Seafood">Seafood</option>
+                    <option value="Bread and Bakery">Bread and Bakery</option>
+                    <option value="Cereal and Breakfast Foods">Cereal and Breakfast Foods</option>
+                    <option value="Pasta and Rice">Pasta and Rice</option>
+                    <option value="Canned Goods">Canned Goods</option>
+                    <option value="Frozen Foods">Frozen Foods</option>
+                    <option value="Snacks and Chips">Snacks and Chips</option>
+                    <option value="Beverages">Beverages</option>
+                    <option value="Condiments and Sauces">Condiments and Sauces</option>
+                    <option value="Baking Supplies">Baking Supplies</option>
+                    <option value="Spices and Seasonings">Spices and Seasonings</option>
+                    <option value="Oils and Vinegars">Oils and Vinegars</option>
+                    <option value="Sweets and Desserts">Sweets and Desserts</option>
+                    <option value="Baby and Infant">Baby and Infant</option>
+                    <option value="Personal Care">Personal Care</option>
+                    <option value="Household Supplies">Household Supplies</option>
+                    <option value="Pet Food and Supplies">Pet Food and Supplies</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="price">Price (optional)</label>
+                <input type="number" id="price" name="price">
+            </div>
+            <button type="submit">Add Item</button>
+        </form>
+    </div>
+    
 </div>
 
 <%- include('../partials/footer') %>

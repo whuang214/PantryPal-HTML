@@ -5,4 +5,10 @@ const itemsCtrl = require('../controllers/items');
 // get the item database
 router.get('/', itemsCtrl.index);
 
+// add item page route
+router.get('/new', itemsCtrl.new);
+
+// add item to database
+// router.post('/create', itemsCtrl.create);
+
 module.exports = router;

@@ -10,9 +10,7 @@ async function allUserList(req, res) {
     const user = req.user;
 
     if (user) {
-        console.log('user->', user);
         const allUserGroceryLists = await List.find({ owner: user._id }).populate('owner').exec();
-        console.log('allUserGrocceryLists->', allUserGroceryLists);
         res.render('lists/index', { title: 'My Lists', lists: allUserGroceryLists });  
     } else {
         console.log('not logged in');
