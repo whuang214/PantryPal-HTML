@@ -1,20 +1,51 @@
-.brand-logo {
-  margin-left: 15px;
+* {
+  box-sizing: border-box;
 }
 
-.card .card-content .card-title {
-  margin-bottom: 10px;
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  color: #333;
 }
 
-#search-row form {
-  padding-top: 20px;
+.center-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
-.student-name {
-  position: relative;
-  top: -5px;
+.title-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5vh;
 }
 
-.collection-item form {
-  margin-top: -5px;
+.add-list-button {
+  margin-left: 2vw;
+}
+
+.list-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.list {
+  margin-bottom: 2vh;
+  padding: 2vh;
+  border: 0.5vh solid #ccc;
+  border-radius: 1vh;
+}
+
+.list a {
+  text-decoration: none;
+  color: #333;
+}
+
+.list a:hover {
+  text-decoration: underline;
 }

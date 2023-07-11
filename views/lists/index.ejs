@@ -1,16 +1,28 @@
 <%- include('../partials/header') %>
 
-<h1>List Page</h1>
-
-<% if (lists.length > 0) { %>
-    <h2>All Lists:</h2>
-    <ul>
-        <% lists.forEach(function(list) { %>
-            <li><a href="/list/<%= list.id %>"><%= list.name %></a></li>
-        <% }); %>
-    </ul>
-<% } else { %>
-    <p>No lists found.</p>
-<% } %>
+<div class="center-container">
+    <div class="title-container">
+        <h3>My Lists</h3>
+        <a href="/lists/new" class="add-list-button">Create List</a>
+    </div>
+    <div class="list-container">
+        <% if (lists.length > 0) { %>
+            <% lists.forEach(function(list) { %>
+                <div class="list">
+                    <a href="/lists/<%= list._id %>">
+                        <h4><%= list.title %></h4>
+                    </a>
+                    <p><%= list.description %></p>
+                    <form action="/lists/<%= list._id %>?_method=DELETE" method="POST">
+                        <button>Delete</button>
+                    </form>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <p>You have no lists yet.</p>
+        <% } %>
+    </div>
+</div>
 
 <%- include('../partials/footer') %>
+
