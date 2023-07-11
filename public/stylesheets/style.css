@@ -14,14 +14,16 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   height: 100vh;
 }
 
 .title-container {
   display: flex;
   align-items: center;
-  margin-bottom: 5vh;
+  justify-content: center;
+  margin-bottom: 2vh;
+  width: 80vw;
 }
 
 .add-list-button {
@@ -31,14 +33,19 @@ body {
 .list-container {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
+  width: 80vw;
 }
 
 .list {
+  display: flex;
+  flex-direction: column;
   margin-bottom: 2vh;
   padding: 2vh;
   border: 0.5vh solid #ccc;
   border-radius: 1vh;
+  width: 100%;
 }
 
 .list a {
@@ -48,4 +55,34 @@ body {
 
 .list a:hover {
   text-decoration: underline;
+}
+
+.owner {
+  margin-top: 1vh;
+  color: #666;
+  font-size: 14px;
+}
+
+.edit-list-button {
+  padding: 5px 10px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-right: 5px;
+}
+
+.delete-list-button {
+  padding: 5px 10px;
+  background-color: #cc3333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.delete-list-button:hover,
+.edit-list-button:hover {
+  background-color: #555;
 }

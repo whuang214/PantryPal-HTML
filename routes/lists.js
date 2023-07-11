@@ -7,8 +7,8 @@ router.get('/', listsCtrl.allUserList);
 // GET /lists/new
 router.get('/new', listsCtrl.new);
 
-// // POST /lists
-// router.post('/', listsCtrl.create);
+// POST /lists
+router.post('/create', listsCtrl.create);
 
 // // GET /lists/:id
 // router.get('/:id', listsCtrl.show);

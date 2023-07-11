@@ -13,9 +13,12 @@
                         <h4><%= list.title %></h4>
                     </a>
                     <p><%= list.description %></p>
+                    <p class="owner">Owner: <%= list.owner.name %></p>
+                    <p class="created">Created: <%= list.createdAt.toDateString() %></p>
                     <form action="/lists/<%= list._id %>?_method=DELETE" method="POST">
-                        <button>Delete</button>
+                        <button class="delete-list-button">Delete</button>
                     </form>
+
                 </div>
             <% }) %>
         <% } else { %>
