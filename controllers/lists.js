@@ -5,6 +5,7 @@ module.exports = {
     new: newlist,
     create,
     show,
+    addItem,
 };
 
 async function allUserList(req, res) {
@@ -41,11 +42,25 @@ async function create(req, res) {
 //show list
 async function show(req, res) {
     try {
-        const list = await List.findById(req.params.id).populate('owner').exec();
+        const list = await List.findById(req.params.id).populate('owner').populate('itemsList').exec();
+        console.log('list->', list);
         res.render('lists/show', { title: 'List Details', list });
     } catch (err) {
         console.log(err);
         res.redirect('/lists');
+    }
+}
+
+// add item to list
+async function addItem(req, res) {
+    try {
+        const list = await List.findById(req.params.id);
+        list.items.push(req.body);
+        await list.save();
+        res.redirect(`/lists/${list._id}`);
+    } catch (err) {
+        console.log(err);
+        res.redirect(`/lists/${list._id}`);
     }
 }
 

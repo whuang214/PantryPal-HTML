@@ -24,7 +24,10 @@
                     <td><%= item.category ? item.category : 'N/A' %></td>
                     <td><%= item.price ? item.price : 'N/A' %></td>
                     <td>
-                        <a href="/items/<%= item._id %>/options" class="button">Options</a>
+                        <% if (user) { %>
+                            <a href="/items/<%= item._id %>/options" class="button">Edit</a>
+                            <a href="/items/<%= item._id %>/add" class="button">Add to List</a>
+                        <% } %>
                     </td>
                 </tr>
             <% }); %>

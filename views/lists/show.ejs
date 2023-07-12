@@ -4,7 +4,7 @@
     
     <div class="title-container">
         <h3><%= list.title %></h3>
-        <a href="" class="button add-button">Add Items</a>
+        <a href="/items" class="button add-button">Add Items</a>
         <a href="" class="button add-button">Options</a>
     </div>
 
@@ -27,7 +27,7 @@
                         <td><%= item.category ? item.category : 'N/A' %></td>
                         <td><%= item.price ? item.price : 'N/A' %></td>
                         <td>
-                            <a href="/items/<%= item._id %>/options" class="options-button">Options</a>
+                            <a href="/lists/<%= list._id %>/<%= item._id %>/delete" class="button">Delete</a>
                         </td>
                     </tr>
                 <% }); %>

@@ -1,0 +1,21 @@
+<%- include('../partials/header') %>
+
+<div class="center-container">
+    <h3>Add Item</h3>
+    <p>Which list do you want to add "<strong><%= item.name %></strong>" to?</p>
+
+    <form action="/items/<%= item.id %>/add" method="POST">
+        <div class="form-group">
+            <label for="list">Select List:</label>
+            <select id="list" name="list">
+                <% lists.forEach(function(list) { %>
+                    <option value="<%= list._id %>"><%= list.title %></option>
+                <% }); %>
+            </select>
+        </div>
+
+        <button type="submit" class="button">Add Item</button>
+    </form>
+</div>
+
+<%- include('../partials/footer') %>

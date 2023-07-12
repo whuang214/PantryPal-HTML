@@ -2,16 +2,23 @@ const router = require('express').Router();
 const passport = require('passport');
 const itemsCtrl = require('../controllers/items');
 
-// get the item database
+// GET the item database
 router.get('/', itemsCtrl.index);
 
-// add item page route
+// GET add item page route
 router.get('/new', itemsCtrl.new);
 
-// add item to database
+// POST add item to database
 router.post('/create', itemsCtrl.create);
 
-// show item page route
+// GET show item page
 router.get('/:id/options', itemsCtrl.show);
+
+// GET add item page
+router.get('/:id/add', itemsCtrl.addItemPage);
+
+// POST add item to list
+router.post('/:id/add', itemsCtrl.addItem);
+
 
 module.exports = router;
