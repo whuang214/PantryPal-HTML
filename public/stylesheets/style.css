@@ -151,6 +151,14 @@ body {
   margin-left: 2vmin;
 }
 
+.delete-button {
+  margin-left: 2vmin;
+}
+
+.delete-button:hover {
+  background-color: #d32f2f;
+}
+
 /* Form styles */
 
 .input-form {
