@@ -1,5 +1,80 @@
 <%- include('../partials/header') %>
 
-<h1>Show List</h1>
+<div class="center-container">
+    
+    <div class="title-container">
+        <h3><%= list.title %></h3>
+        <a href="" class="button add-button">Add Items</a>
+        <a href="" class="button add-button">Options</a>
+    </div>
+
+    <% if (list.itemsList.length > 0) { %>
+        <table class="items-table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% list.itemsList.forEach(function(item) { %>
+                    <tr>
+                        <td><img src="<%= item.icon %>" alt="Item Icon" class="icon"></td>
+                        <td><%= item.name %></td>
+                        <td><%= item.category ? item.category : 'N/A' %></td>
+                        <td><%= item.price ? item.price : 'N/A' %></td>
+                        <td>
+                            <a href="/items/<%= item._id %>/options" class="options-button">Options</a>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    <% } else { %>
+        <p>Add your first item to the list.</p>
+    <% } %>
+
+    <div class="title-container">
+        <h3>Shared List</h3>
+        <a href="" class="button add-button">Share</a>
+    </div>
+    
+    <table class="shared-users-table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% const owner = list.owner; %>
+            <tr>
+                <td><img src="<%= owner.avatar %>" alt="Avi" class="icon"></td>
+                <td><%= owner.name %></td>
+                <td><%= owner.email %></td>
+                <td>Owner</td>
+            </tr>
+            <% if (list.sharedList.length > 0) { %>
+                <% list.sharedList.forEach(function(userId) { %>
+                    <% if (userId !== list.owner) { %>
+                        <% const user = sharedUsers[userId]; %>
+                        <tr>
+                            <td><img src="<%= user.avatar %>" alt="Avi" class="icon"></td>
+                            <td><%= user.name %></td>
+                            <td><%= user.email %></td>
+                            <td>Collaborator</td>
+                        </tr>
+                    <% } %>
+                <% }); %>
+            <% } %>
+        </tbody>
+    </table>
+
+</div>
 
 <%- include('../partials/footer') %>

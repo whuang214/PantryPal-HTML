@@ -3,7 +3,7 @@
 <div class="center-container">
     <div class="title-container">
         <h3>Items Database</h3>
-        <a href="/items/new" class="add-button">Create Item</a>
+        <a href="/items/new" class="button add-button">Create Item</a>
     </div>
 
     <table class="items-table">
@@ -24,7 +24,7 @@
                     <td><%= item.category ? item.category : 'N/A' %></td>
                     <td><%= item.price ? item.price : 'N/A' %></td>
                     <td>
-                        <a href="/items/<%= item._id %>/options" class="options-button">Options</a>
+                        <a href="/items/<%= item._id %>/options" class="button">Options</a>
                     </td>
                 </tr>
             <% }); %>
