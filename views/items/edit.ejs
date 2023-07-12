@@ -1,0 +1,50 @@
+<%- include('../partials/header') %>
+
+<div class="center-container">
+    <div class="title-container">
+        <h3>Edit Item</h3>
+        <a href="" class="button">Delete Item</a>
+    </div>
+
+    <form action="/items/<%= item._id %>?_method=PUT" method="POST" class="input-form">
+        <div class="form-group">
+            <label for="item-name">Item Name:</label>
+            <input type="text" id="item-name" name="name" value="<%= item.name %>" required>
+        </div>
+
+        <div class="form-group">
+            <label for="item-category">Item Category:</label>
+            <select id="category" name="category" required>
+                <option value="Fruits and Vegetables" <%= item.category === 'Fruits and Vegetables' ? 'selected' : '' %>>Fruits and Vegetables</option>
+                <option value="Dairy and Eggs" <%= item.category === 'Dairy and Eggs' ? 'selected' : '' %>>Dairy and Eggs</option>
+                <option value="Meat and Poultry" <%= item.category === 'Meat and Poultry' ? 'selected' : '' %>>Meat and Poultry</option>
+                <option value="Seafood" <%= item.category === 'Seafood' ? 'selected' : '' %>>Seafood</option>
+                <option value="Bread and Bakery" <%= item.category === 'Bread and Bakery' ? 'selected' : '' %>>Bread and Bakery</option>
+                <option value="Cereal and Breakfast Foods" <%= item.category === 'Cereal and Breakfast Foods' ? 'selected' : '' %>>Cereal and Breakfast Foods</option>
+                <option value="Pasta and Rice" <%= item.category === 'Pasta and Rice' ? 'selected' : '' %>>Pasta and Rice</option>
+                <option value="Canned Goods" <%= item.category === 'Canned Goods' ? 'selected' : '' %>>Canned Goods</option>
+                <option value="Frozen Foods" <%= item.category === 'Frozen Foods' ? 'selected' : '' %>>Frozen Foods</option>
+                <option value="Snacks and Chips" <%= item.category === 'Snacks and Chips' ? 'selected' : '' %>>Snacks and Chips</option>
+                <option value="Beverages" <%= item.category === 'Beverages' ? 'selected' : '' %>>Beverages</option>
+                <option value="Condiments and Sauces" <%= item.category === 'Condiments and Sauces' ? 'selected' : '' %>>Condiments and Sauces</option>
+                <option value="Baking Supplies" <%= item.category === 'Baking Supplies' ? 'selected' : '' %>>Baking Supplies</option>
+                <option value="Spices and Seasonings" <%= item.category === 'Spices and Seasonings' ? 'selected' : '' %>>Spices and Seasonings</option>
+                <option value="Oils and Vinegars" <%= item.category === 'Oils and Vinegars' ? 'selected' : '' %>>Oils and Vinegars</option>
+                <option value="Sweets and Desserts" <%= item.category === 'Sweets and Desserts' ? 'selected' : '' %>>Sweets and Desserts</option>
+                <option value="Baby and Infant" <%= item.category === 'Baby and Infant' ? 'selected' : '' %>>Baby and Infant</option>
+                <option value="Personal Care" <%= item.category === 'Personal Care' ? 'selected' : '' %>>Personal Care</option>
+                <option value="Household Supplies" <%= item.category === 'Household Supplies' ? 'selected' : '' %>>Household Supplies</option>
+                <option value="Pet Food and Supplies" <%= item.category === 'Pet Food and Supplies' ? 'selected' : '' %>>Pet Food and Supplies</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="item-price">Item Price:</label>
+            <input type="number" id="item-price" name="price" step="0.01" value="<%= item.price %>" required>
+        </div>
+
+        <button type="submit" class="button">Update Item</button>
+    </form>
+</div>
+
+<%- include('../partials/footer') %>

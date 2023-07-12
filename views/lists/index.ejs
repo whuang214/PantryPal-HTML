@@ -12,9 +12,9 @@
                     <a href="/lists/<%= list._id %>">
                         <h4><%= list.title %></h4>
                     </a>
+                    <p class="created">Created: <%= list.createdAt.toDateString() %></p>
                     <span class="owner-name"><%= list.owner.name %></span>
                     <img src="<%= list.owner.avatar %>" alt="Owner Avatar" class="avatar">
-                    <p class="created">Created: <%= list.createdAt.toDateString() %></p>
                     <form action="/lists/<%= list._id %>?_method=DELETE" class="delete-form" method="POST" onsubmit="return confirm('Are you sure you want to delete?')">
                         <button class="delete-list-button" type="submit">Delete</button>
                     </form>

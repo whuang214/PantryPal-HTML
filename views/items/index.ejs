@@ -25,7 +25,7 @@
                     <td><%= item.price ? item.price : 'N/A' %></td>
                     <td>
                         <% if (user) { %>
-                            <a href="/items/<%= item._id %>/options" class="button">Edit</a>
+                            <a href="/items/<%= item._id %>/edit" class="button">Edit</a>
                             <a href="/items/<%= item._id %>/add" class="button">Add to List</a>
                         <% } %>
                     </td>

@@ -5,9 +5,11 @@ module.exports = {
     index,
     new: newItems,
     create,
-    show,
+
     addItemPage,
     addItem,
+    editItem,
+    updateItem,
 };
 
 // going to the items page
@@ -20,7 +22,7 @@ function newItems(req, res) {
     res.render('items/new', { title: 'Add Item' });
 }
 
-// create item
+// create item post
 async function create(req, res) {
     const item = new Item(req.body);
     // console.log("added item->", item);
@@ -31,18 +33,6 @@ async function create(req, res) {
     catch (err) {
         console.log(err);
         res.redirect('/items/new');
-    }
-}
-
-// show item
-async function show(req, res) {
-    try {
-        const item = await Item.findById(req.params.id);
-        res.render('items/show', { title: 'Item Details', item });
-    }
-    catch (err) {
-        console.log(err);
-        res.redirect('/items');
     }
 }
 
@@ -71,6 +61,33 @@ async function addItem(req, res) {
         res.redirect(`/lists/${list._id}`);
     }
     catch (err) {
+        console.log(err);
+        res.redirect('/items');
+    }
+}
+
+// edit item page
+async function editItem(req, res) {
+    try {
+        const item = await Item.findById(req.params.id);
+        res.render('items/edit', { title: 'Edit Item', item });
+    }
+    catch (err) {
+        console.log(err);
+        res.redirect('/items');
+    }
+}
+
+// edit item put
+async function updateItem(req, res) {
+    try {
+        const item = await Item.findById(req.params.id);
+        item.name = req.body.name;
+        item.category = req.body.category;
+        item.price = req.body.price;    
+        await item.save();
+        res.redirect('/items');
+    } catch (err) {
         console.log(err);
         res.redirect('/items');
     }

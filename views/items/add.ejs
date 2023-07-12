@@ -4,7 +4,7 @@
     <h3>Add Item</h3>
     <p>Which list do you want to add "<strong><%= item.name %></strong>" to?</p>
 
-    <form action="/items/<%= item.id %>/add" method="POST">
+    <form action="/items/<%= item.id %>/add" method="POST" class="input-form">
         <div class="form-group">
             <label for="list">Select List:</label>
             <select id="list" name="list">
