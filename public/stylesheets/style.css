@@ -22,16 +22,57 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 2vmin;
   width: 80vmin;
 }
 
+/* table styles */
+.items-table {
+  width: 80vmin;
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+}
+
+.items-table th,
+.items-table td {
+  padding: 1vmin;
+  border-bottom: 1px solid #ccc;
+}
+
+.items-table th {
+  background-color: #f2f2f2;
+  text-align: center;
+}
+
+.items-table td {
+  text-align: center;
+}
+
+.items-table tbody tr:hover {
+  background-color: #f9f9f9;
+}
+
+.options-button {
+  padding: 0.8vmin 1.6vmin;
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #333;
+  border-radius: 4px;
+  font-size: 1.6vmin;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.options-button:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+/* List styles */
 .list-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 80vmin;
 }
 
 .list {
@@ -42,7 +83,7 @@ body {
   padding: 2vmin;
   border: 0.5vmin solid #ccc;
   border-radius: 1vmin;
-  width: 100%;
+  width: 80vmin;
 }
 
 .list a {
@@ -50,6 +91,7 @@ body {
   color: #333;
   flex-grow: 1;
 }
+
 
 .list a:hover {
   text-decoration: underline;

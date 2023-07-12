@@ -9,6 +9,6 @@ router.get('/', itemsCtrl.index);
 router.get('/new', itemsCtrl.new);
 
 // add item to database
-// router.post('/create', itemsCtrl.create);
+router.post('/create', itemsCtrl.create);
 
 module.exports = router;

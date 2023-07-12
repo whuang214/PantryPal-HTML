@@ -6,18 +6,28 @@
         <a href="/items/new" class="add-button">Create Item</a>
     </div>
 
-    <div class="items-container">
-        <% items.forEach(function(item) { %>
-            <div class="item">
-                <h2><%= item._id %></h2>
-                <p>Grocery List ID: <%= item.groceryList %></p>
-                <p>Checked: <%= item.isChecked ? 'Yes' : 'No' %></p>
-                <p>Quantity: <%= item.quantity %></p>
-                <p>Category: <%= item.category ? item.category : 'N/A' %></p>
-                <p>Price: <%= item.price ? item.price : 'N/A' %></p>
-            </div>
-        <% }); %>
-    </div>
+    <table class="items-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% items.forEach(function(item) { %>
+                <tr>
+                    <td><%= item.name %></td>
+                    <td><%= item.category ? item.category : 'N/A' %></td>
+                    <td><%= item.price ? item.price : 'N/A' %></td>
+                    <td>
+                        <a href="/items/<%= item._id %>/options" class="options-button">Options</a>
+                    </td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
 </div>
 
 <%- include('../partials/footer') %>

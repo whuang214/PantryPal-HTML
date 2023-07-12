@@ -3,6 +3,7 @@ const Item = require('../models/GroceryItem');
 module.exports = {
     index,
     new: newItems,
+    create
 };
 
 // going to the items page
@@ -15,4 +16,15 @@ function newItems(req, res) {
     res.render('items/new', { title: 'Add Item' });
 }
 
-// function create(req, res) {}
+async function create(req, res) {
+    const item = new Item(req.body);
+    console.log("added item->", item);
+    try {
+        await item.save();
+        res.redirect('/items');
+    }
+    catch (err) {
+        console.log(err);
+        res.redirect('/items/new');
+    }
+}
