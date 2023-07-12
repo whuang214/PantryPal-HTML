@@ -12,6 +12,7 @@ const methodOverride = require('method-override');
 const indexRoutes = require('./routes/index');
 const listsRoutes = require('./routes/lists');
 const itemsRoutes = require('./routes/items');
+const contactsRoutes = require('./routes/contacts');
 
 
 // create the Express app
@@ -56,6 +57,8 @@ app.use(function (req, res, next) {
 app.use('/', indexRoutes);
 app.use('/lists', listsRoutes);
 app.use('/items', itemsRoutes);
+app.use('/contacts', contactsRoutes);
+
 
 
 
