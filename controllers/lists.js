@@ -4,6 +4,7 @@ module.exports = {
     allUserList,
     new: newlist,
     create,
+    show,
 };
 
 async function allUserList(req, res) {
@@ -34,6 +35,17 @@ async function create(req, res) {
     } catch (err) {
         console.log(err);
         res.render('lists/new', { title });
+    }
+}
+
+//show list
+async function show(req, res) {
+    try {
+        const list = await List.findById(req.params.id).populate('owner').exec();
+        res.render('lists/show', { title: 'List Details', list });
+    } catch (err) {
+        console.log(err);
+        res.redirect('/lists');
     }
 }
 

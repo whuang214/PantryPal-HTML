@@ -11,4 +11,7 @@ router.get('/new', itemsCtrl.new);
 // add item to database
 router.post('/create', itemsCtrl.create);
 
+// show item page route
+router.get('/:id/options', itemsCtrl.show);
+
 module.exports = router;

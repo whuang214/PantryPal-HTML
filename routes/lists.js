@@ -10,8 +10,8 @@ router.get('/new', listsCtrl.new);
 // POST /lists
 router.post('/create', listsCtrl.create);
 
-// // GET /lists/:id
-// router.get('/:id', listsCtrl.show);
+// GET /lists/:id
+router.get('/:id', listsCtrl.show);
 
 // // POST /lists/:id/items
 // router.post('/:id/items', listsCtrl.addItem);

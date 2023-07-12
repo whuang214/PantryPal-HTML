@@ -3,7 +3,8 @@ const Item = require('../models/GroceryItem');
 module.exports = {
     index,
     new: newItems,
-    create
+    create,
+    show,
 };
 
 // going to the items page
@@ -26,5 +27,16 @@ async function create(req, res) {
     catch (err) {
         console.log(err);
         res.redirect('/items/new');
+    }
+}
+
+async function show(req, res) {
+    try {
+        const item = await Item.findById(req.params.id);
+        res.render('items/show', { title: 'Item Details', item });
+    }
+    catch (err) {
+        console.log(err);
+        res.redirect('/items');
     }
 }
