@@ -17,6 +17,7 @@ function newItems(req, res) {
     res.render('items/new', { title: 'Add Item' });
 }
 
+// create item
 async function create(req, res) {
     const item = new Item(req.body);
     console.log("added item->", item);
@@ -30,6 +31,7 @@ async function create(req, res) {
     }
 }
 
+// show item
 async function show(req, res) {
     try {
         const item = await Item.findById(req.params.id);
