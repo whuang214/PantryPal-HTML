@@ -3,14 +3,14 @@
 <div class="center-container">
     <h3>Add an Item</h3>
     <div class="list-container">
-        <form action="/items/create" method="POST">
+        <form action="/items/create" method="POST" class="input-form">
             <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" id="name" name="name">
+                <input type="text" id="name" name="name" required>
             </div>
             <div class="form-group">
                 <label for="category">Category</label>
-                <select id="category" name="category">
+                <select id="category" name="category" required>
                     <option value="" disabled selected>Select a category</option>
                     <option value="Fruits and Vegetables">Fruits and Vegetables</option>
                     <option value="Dairy and Eggs">Dairy and Eggs</option>
@@ -35,9 +35,10 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="price">Price (optional)</label>
-                <input type="number" id="price" name="price">
+                <label for="amount">Price (optional)</label>
+                <input type="number" id="price" name="price" step="0.01" min="0">
             </div>
+            
             <button type="submit">Add Item</button>
         </form>
     </div>
