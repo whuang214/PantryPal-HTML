@@ -17,9 +17,9 @@ router.get('/:id', listsCtrl.show);
 router.post('/:id/items', listsCtrl.addItem);
 
 // // DELETE /lists/:id
-// router.delete('/:id', listsCtrl.delete);
+router.delete('/:id', listsCtrl.deleteList);
 
-// // DELETE /lists/:id/items/:itemId
+// DELETE /lists/:id/items/:itemId
 // router.delete('/:id/items/:itemId', listsCtrl.deleteItem);
 
 module.exports = router;

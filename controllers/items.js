@@ -23,7 +23,7 @@ function newItems(req, res) {
 // create item
 async function create(req, res) {
     const item = new Item(req.body);
-    console.log("added item->", item);
+    // console.log("added item->", item);
     try {
         await item.save();
         res.redirect('/items');

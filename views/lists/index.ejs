@@ -15,10 +15,9 @@
                     <span class="owner-name"><%= list.owner.name %></span>
                     <img src="<%= list.owner.avatar %>" alt="Owner Avatar" class="avatar">
                     <p class="created">Created: <%= list.createdAt.toDateString() %></p>
-                    <form action="/lists/<%= list._id %>?_method=DELETE" method="POST">
-                        <button class="delete-list-button">Delete</button>
+                    <form action="/lists/<%= list._id %>?_method=DELETE" class="delete-form" method="POST" onsubmit="return confirm('Are you sure you want to delete?')">
+                        <button class="delete-list-button" type="submit">Delete</button>
                     </form>
-
                 </div>
             <% }) %>
         <% } else { %>

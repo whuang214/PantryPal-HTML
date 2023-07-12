@@ -6,6 +6,7 @@ module.exports = {
     create,
     show,
     addItem,
+    deleteList,
 };
 
 async function allUserList(req, res) {
@@ -13,6 +14,7 @@ async function allUserList(req, res) {
 
     if (user) {
         const allUserGroceryLists = await List.find({ owner: user._id }).populate('owner').exec();
+        // console.log('allUserGroceryLists->', allUserGroceryLists);
         res.render('lists/index', { title: 'My Lists', lists: allUserGroceryLists });  
     } else {
         console.log('not logged in');
@@ -43,7 +45,7 @@ async function create(req, res) {
 async function show(req, res) {
     try {
         const list = await List.findById(req.params.id).populate('owner').populate('itemsList').exec();
-        console.log('list->', list);
+        // console.log('list->', list);
         res.render('lists/show', { title: 'List Details', list });
     } catch (err) {
         console.log(err);
@@ -61,6 +63,17 @@ async function addItem(req, res) {
     } catch (err) {
         console.log(err);
         res.redirect(`/lists/${list._id}`);
+    }
+}
+
+// delete list
+async function deleteList(req, res) {
+    try {
+        await List.findByIdAndDelete(req.params.id);
+        res.redirect('/lists');
+    } catch (err) {
+        console.log(err);
+        res.redirect('/lists');
     }
 }
 
