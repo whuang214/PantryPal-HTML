@@ -11,41 +11,40 @@
                 <label for="listName">List Name:</label>
                 <input type="text" id="listName" name="listName" value="<%= list.title %>">
             </div>
-            
-            <div class="form-group">
-                <label for="sharedUsers">Shared Users:</label>
-                <table class="shared-users-table">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Role</th>
-                            <th></th> <!-- Add column for delete button -->
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% list.sharedList.forEach(function(sharedUser) { %>
-                            <tr>
-                                <td><img src="<%= sharedUser.avatar %>" alt="User Avatar" class="icon"></td>
-                                <td class="name"><%= sharedUser.name %></td>
-                                <td><%= sharedUser.email %></td>
-                                <td class="role collaborator">Collaborator</td>
-                                <td>
-                                    <form action="/lists/<%= list._id %>/shared/<%= sharedUser._id %>?_method=DELETE" method="POST" onsubmit="return confirm('Are you sure you want to remove this shared user?')">
-                                        <button type="submit" class="button delete-button">Delete</button>
-                                    </form>
-                                </td>
-                            </tr>
-                        <% }); %>
-                    </tbody>
-                </table>
-            </div>
-            
-            
-            
-            <button type="submit" class="button">Update List</button>
+
+            <button type="submit" class="button">Update</button>
         </form>
+        
+        <div class="title-container">
+            <h3>Shared Users</h3>
+        </div>
+        <table class="shared-users-table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th></th> <!-- Add column for delete button -->
+                </tr>
+            </thead>
+            <tbody>
+                <% list.sharedList.forEach(function(sharedUser) { %>
+                    <tr>
+                        <td><img src="<%= sharedUser.avatar %>" alt="User" class="icon"></td>
+                        <td class="name"><%= sharedUser.name %></td>
+                        <td><%= sharedUser.email %></td>
+                        <td class="role collaborator">Collaborator</td>
+                        <td>
+                            <form action="/lists/<%= list._id %>/shared/<%= sharedUser._id %>?_method=DELETE" method="POST" onsubmit="return confirm('Are you sure you want to remove this shared user?')">
+                                <button type="submit" class="button delete-button">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+                
     <% } else { %>
         <p>You don't have permission to edit this list.</p>
     <% } %>
