@@ -29,6 +29,9 @@ router.get('/:id/edit', itemsCtrl.editItem);
 // PUT edit item
 router.put('/:id', itemsCtrl.updateItem);
 
+// delete item
+router.delete('/:id', itemsCtrl.deleteItem);
+
 
 
 

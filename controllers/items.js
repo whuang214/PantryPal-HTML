@@ -10,6 +10,8 @@ module.exports = {
     addItem,
     editItem,
     updateItem,
+
+    deleteItem,
 };
 
 // going to the items page
@@ -88,6 +90,17 @@ async function updateItem(req, res) {
         await item.save();
         res.redirect('/items');
     } catch (err) {
+        console.log(err);
+        res.redirect('/items');
+    }
+}
+
+// DELETE item
+async function deleteItem(req, res) {
+    try {
+        await Item.findByIdAndDelete(req.params.id);
+        res.redirect('/items');
+    } catch(err) {
         console.log(err);
         res.redirect('/items');
     }

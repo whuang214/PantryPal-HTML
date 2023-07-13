@@ -4,8 +4,8 @@
     
     <div class="title-container">
         <h3><%= list.title %></h3>
-        <a href="/items" class="button add-button">Add Items</a>
-        <a href="" class="button add-button">Options</a>
+        <a href="/items" class="button title-button">Add Items</a>
+        <a href="" class="button title-button">Options</a>
     </div>
 
     <% if (list.itemsList.length > 0) { %>
@@ -22,7 +22,11 @@
             <tbody>
                 <% list.itemsList.forEach(function(item) { %>
                     <tr>
-                        <td><img src="<%= item.icon %>" alt="Item Icon" class="icon"></td>
+                        <td>
+                            <% if (item.icon) { %>
+                                <img src="<%= item.icon %>" alt="Item Icon" class="icon">
+                            <% } %>
+                        </td>
                         <td><%= item.name %></td>
                         <td><%= item.category ? item.category : 'N/A' %></td>
                         <td><%= item.price ? item.price : 'N/A' %></td>
@@ -36,10 +40,11 @@
     <% } else { %>
         <p>Add your first item to the list.</p>
     <% } %>
+    
 
     <div class="title-container">
         <h3>Shared List</h3>
-        <a href="" class="button add-button">Share</a>
+        <a href="/contacts" class="button title-button">Share</a>
     </div>
     
     <table class="shared-users-table">
@@ -55,9 +60,9 @@
             <% const owner = list.owner; %>
             <tr>
                 <td><img src="<%= owner.avatar %>" alt="Avi" class="icon"></td>
-                <td><%= owner.name %></td>
+                <td class="name"><%= owner.name %></td>
                 <td><%= owner.email %></td>
-                <td>Owner</td>
+                <td class="role owner">Owner</td>
             </tr>
             <% if (list.sharedList.length > 0) { %>
                 <% list.sharedList.forEach(function(userId) { %>
@@ -65,15 +70,17 @@
                         <% const user = sharedUsers[userId]; %>
                         <tr>
                             <td><img src="<%= user.avatar %>" alt="Avi" class="icon"></td>
-                            <td><%= user.name %></td>
+                            <td class="name"><%= user.name %></td>
                             <td><%= user.email %></td>
-                            <td>Collaborator</td>
+                            <td class="role collaborator">Collaborator</td>
                         </tr>
                     <% } %>
                 <% }); %>
             <% } %>
         </tbody>
     </table>
+    
+    
 
 </div>
 

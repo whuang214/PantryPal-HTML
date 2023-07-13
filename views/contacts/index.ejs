@@ -1,5 +1,50 @@
 <%- include('../partials/header') %>
 
-<h1>Show All Contacts</h1>
+<div class="center-container">
+    <div class="title-container">
+        <h3>Add Contact</h3>
+    </div>
+
+    <form action="/contacts/search" method="GET" class="input-form">
+        <div class="form-group">
+            <label for="search-input">Search by Name or Email:</label>
+            <input type="text" id="search-input" name="query" required>
+        </div>
+
+        <button type="submit" class="button">Search</button>
+    </form>
+
+    <% if (users.length > 0) { %>
+        <h4>Search Results:</h4>
+        <table class="items-table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Date Joined</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% users.forEach(function(currentUser) { %>
+                    <% if (!user._id.equals(currentUser._id)) { %>
+                        <tr>
+                            <td><img src="<%= currentUser.avatar %>" alt="avi" class="avatar"> </td>
+                            <td><%= currentUser.name %></td>
+                            <td><%= currentUser.email %></td>
+                            <td><%= currentUser.createdAt.toDateString() %></td>
+                            <td>
+                                <a href="/contacts/<%= currentUser._id %>/add" class="button">Add to List</a>
+                            </td>
+                        </tr>
+                    <% } %>
+                <% }) %>
+            </tbody>
+        </table>
+    <% } else if (searched) { %>
+        <p>No users found.</p>
+    <% } %>
+</div>
 
 <%- include('../partials/footer') %>

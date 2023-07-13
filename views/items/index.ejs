@@ -3,7 +3,7 @@
 <div class="center-container">
     <div class="title-container">
         <h3>Items Database</h3>
-        <a href="/items/new" class="button add-button">Create Item</a>
+        <a href="/items/new" class="button title-button">Create Item</a>
     </div>
 
     <table class="items-table">
@@ -26,7 +26,7 @@
                     <td>
                         <% if (user) { %>
                             <a href="/items/<%= item._id %>/edit" class="button">Edit</a>
-                            <a href="/items/<%= item._id %>/add" class="button">Add to List</a>
+                            <a href="/items/<%= item._id %>/add" class="button title-button">Add to List</a>
                         <% } %>
                     </td>
                 </tr>

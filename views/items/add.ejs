@@ -1,7 +1,9 @@
 <%- include('../partials/header') %>
 
 <div class="center-container">
-    <h3>Add Item</h3>
+    <div class="title-container">
+        <h3>Add Item</h3>
+    </div>
     <p>Which list do you want to add "<strong><%= item.name %></strong>" to?</p>
 
     <form action="/items/<%= item.id %>/add" method="POST" class="input-form">

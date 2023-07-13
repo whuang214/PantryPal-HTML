@@ -3,7 +3,7 @@
 <div class="center-container">
     <div class="title-container">
         <h3>My Lists</h3>
-        <a href="/lists/new" class="button add-button">Create List</a>
+        <a href="/lists/new" class="button title-button">Create List</a>
     </div>
     <div class="list-container">
         <% if (lists.length > 0) { %>
@@ -16,7 +16,7 @@
                     <img src="<%= list.owner.avatar %>" alt="Owner Avatar" class="avatar">
                     <span class="owner-name"><%= list.owner.name %></span>
                     <form action="/lists/<%= list._id %>?_method=DELETE" class="delete-form" method="POST" onsubmit="return confirm('Are you sure you want to delete?')">
-                        <button class="delete-list-button" type="submit">Delete</button>
+                        <button class="button" type="submit">Delete</button>
                     </form>
                 </div>
             <% }) %>

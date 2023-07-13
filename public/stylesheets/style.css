@@ -1,8 +1,5 @@
 * {
   box-sizing: border-box;
-}
-
-body {
   margin: 0;
   padding: 0;
   font-family: Arial, Helvetica, sans-serif;
@@ -23,53 +20,14 @@ body {
   align-items: center;
   justify-content: center;
   width: 80vmin;
+  margin: 1vmin;
 }
 
-.name-avi-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  width: 80vmin;
+.title-container h3 {
+  font-size: 2vmin;
 }
 
-.icon {
-  width: 3vmin;
-  height: 3vmin;
-  border-radius: 50%;
-  margin-right: 1vmin;
-}
-
-.name-avi-container h4 {
-  margin-right: 1vmin;
-}
-
-/* table styles */
-.items-table {
-  width: 80vmin;
-  border-collapse: collapse;
-  border: 1px solid #ccc;
-}
-
-.items-table th,
-.items-table td {
-  padding: 1vmin;
-  border-bottom: 1px solid #ccc;
-}
-
-.items-table th {
-  background-color: #f2f2f2;
-  text-align: center;
-}
-
-.items-table td {
-  text-align: center;
-}
-
-.items-table tbody tr:hover {
-  background-color: #f9f9f9;
-}
-
+/* button and a href styles */
 .button {
   padding: 0.8vmin 1.6vmin;
   background-color: #fff;
@@ -79,12 +37,112 @@ body {
   font-size: 1.6vmin;
   text-decoration: none;
   transition: background-color 0.3s ease;
+  cursor: pointer;
 }
 
 .button:hover {
   background-color: #333;
   color: #fff;
 }
+
+
+/* avatar container styles*/
+.name-avi-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 80vmin;
+}
+
+.name-avi-container h4 {
+  margin-right: 1vmin;
+}
+
+.icon {
+  width: 3vmin;
+  height: 3vmin;
+  border-radius: 50%;
+  margin-right: 1vmin;
+}
+
+/* table styles */
+.items-table {
+  width: 80vmin;
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+}
+
+.items-table th,
+.items-table td {
+  padding: 1.25vmin;
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+}
+
+.items-table th:last-child,
+.items-table td:last-child {
+  text-align: right;
+}
+
+.items-table th {
+  background-color: #f2f2f2;
+}
+
+.items-table tbody tr:hover {
+  background-color: #f9f9f9;
+}
+
+
+
+.shared-users-table {
+  width: 80vmin;
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+  margin-top: 2vmin;
+}
+
+.shared-users-table th,
+.shared-users-table td {
+  padding: 1vmin;
+  border-bottom: 1px solid #ccc;
+}
+
+.shared-users-table th {
+  background-color: #f2f2f2;
+  text-align: left;
+}
+
+.shared-users-table td {
+  text-align: left;
+}
+
+.shared-users-table tbody tr:hover {
+  background-color: #f9f9f9;
+}
+
+.shared-users-table .icon {
+  width: 3vmin;
+  height: 3vmin;
+  border-radius: 50%;
+}
+
+.shared-users-table .name {
+  font-weight: bold;
+}
+
+.shared-users-table .role {
+  color: #666;
+}
+
+.shared-users-table .owner {
+  color: #00b300;
+}
+
+.shared-users-table .collaborator {
+  color: #3366cc;
+}
+
 
 /* List styles */
 .list-container {
@@ -99,7 +157,7 @@ body {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 2vmin;
-  padding: 2vmin;
+  padding: 3vmin;
   border: 0.5vmin solid #ccc;
   border-radius: 1vmin;
   width: 80vmin;
@@ -110,7 +168,6 @@ body {
   color: #333;
   flex-grow: 1;
 }
-
 
 .list a:hover {
   text-decoration: underline;
@@ -136,27 +193,8 @@ body {
   margin-right: 1vmin;
 }
 
-.edit-list-button,
-.delete-list-button {
-  padding: 1vmin 2vmin;
-  background-color: #333;
-  color: #fff;
-  border: none;
-  border-radius: 1vmin;
-  cursor: pointer;
-  font-size: 1.4vmin;
-}
-
-.add-button {
+.title-button {
   margin-left: 2vmin;
-}
-
-.delete-button {
-  margin-left: 2vmin;
-}
-
-.delete-button:hover {
-  background-color: #d32f2f;
 }
 
 /* Form styles */
@@ -186,17 +224,4 @@ select {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
-}
-
-button[type="submit"] {
-  padding: 10px 20px;
-  background-color: #333;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-button[type="submit"]:hover {
-  background-color: #555;
 }

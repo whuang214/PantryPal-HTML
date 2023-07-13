@@ -3,7 +3,10 @@
 <div class="center-container">
     <div class="title-container">
         <h3>Edit Item</h3>
-        <a href="" class="button delete-button">Delete Item</a>
+        <form action="/items/<%= item._id %>?_method=DELETE" method="POST" class="delete-form">
+            <button type="submit" class="button title-button" onclick="return confirm('Are you sure you want to delete this item?')">Delete Item</button>
+        </form>
+        
     </div>
 
     <form action="/items/<%= item._id %>?_method=PUT" method="POST" class="input-form">
