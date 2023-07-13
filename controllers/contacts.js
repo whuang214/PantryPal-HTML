@@ -13,18 +13,24 @@ function index(req, res) {
 
 // Search users based on query
 async function searchUsers(req, res) {
-    const query = req.query.query; // Get the search query from the request
-
+    const query = req.query.query.toLowerCase(); // Convert the search query to lowercase
+  
     try {
-        // Search for users matching the query
-        const users = await User.find({ $or: [{ name: query }, { email: query }] });
-
-        res.render('contacts/index', { title: 'Add Contact', users, searched: true });
+      // Search for users matching the lowercase query
+      const users = await User.find({
+        $or: [
+          { name: { $regex: query, $options: 'i' } }, // Case-insensitive search for name
+          { email: { $regex: query, $options: 'i' } }, // Case-insensitive search for email
+        ],
+      });
+  
+      res.render('contacts/index', { title: 'Add Contact', users, searched: true });
     } catch (error) {
-        console.error(error);
-        res.render('contacts/index', { title: 'Add Contact', users: [], searched: true });
+      console.error(error);
+      res.render('contacts/index', { title: 'Add Contact', users: [], searched: true });
     }
-}
+  }
+  
 
 // render add to list page
 async function addToList(req, res) {
