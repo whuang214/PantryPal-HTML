@@ -26,7 +26,7 @@ async function allUserList(req, res) {
       const sharedLists = await List.find({ sharedList: { $in: [user._id] } })
         .populate("owner")
         .exec();
-      console.log("sharedLists->", sharedLists);
+      // console.log("sharedLists->", sharedLists);
       const allLists = ownedLists.concat(sharedLists);
 
       res.render("lists/index", { title: "My Lists", lists: allLists });
