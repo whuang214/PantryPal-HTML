@@ -42,41 +42,6 @@
     <% } else { %>
         <p>Add your first item to the list.</p>
     <% } %>
-    
-
-    <div class="title-container">
-        <h3>Shared List</h3>
-        <a href="/contacts" class="button title-button">Share</a>
-    </div>
-    
-    <table class="shared-users-table">
-        <thead>
-            <tr>
-                <th></th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Role</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% const owner = list.owner; %>
-            <tr>
-                <td><img src="<%= owner.avatar %>" alt="Avi" class="icon"></td>
-                <td class="name"><%= owner.name %></td>
-                <td><%= owner.email %></td>
-                <td class="role owner">Owner</td>
-            </tr>
-            <% list.sharedList.forEach(function(user) { %>
-                <tr>
-                    <td><img src="<%= user.avatar %>" alt="Avi" class="icon"></td>
-                    <td class="name"><%= user.name %></td>
-                    <td><%= user.email %></td>
-                    <td class="role collaborator">Collaborator</td>
-                </tr>
-            <% }); %>
-        </tbody>
-    </table>
-    
 
 </div>
 
