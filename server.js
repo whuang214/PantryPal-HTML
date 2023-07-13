@@ -8,12 +8,12 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const passport = require('passport');
 const methodOverride = require('method-override');
+const MongoStore = require('connect-mongo');
 
 const indexRoutes = require('./routes/index');
 const listsRoutes = require('./routes/lists');
 const itemsRoutes = require('./routes/items');
 const contactsRoutes = require('./routes/contacts');
-
 
 // create the Express app
 const app = express();
@@ -35,12 +35,17 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-// mount the session middleware
+
+// store the session data in the DB (instead of servers memory)
 app.use(session({
+  store: MongoStore.create({
+    mongoUrl: process.env.DATABASE_URL
+  }),
   secret: process.env.SECRET,
   resave: false,
   saveUninitialized: true
 }));
+
 
 app.use(passport.initialize());
 app.use(passport.session());

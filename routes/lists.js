@@ -22,5 +22,11 @@ router.delete('/:id', listsCtrl.deleteList);
 // DELETE /lists/:id/items/:itemId
 router.delete('/:id/item/:itemId', listsCtrl.deleteItem);
 
+// GET /lists/:id/edit
+router.get('/:id/edit', listsCtrl.editPage);
+
+// PUT /lists/:id
+router.put('/:id/edit', listsCtrl.update);
+
 module.exports = router;
 

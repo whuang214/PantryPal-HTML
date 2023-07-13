@@ -8,6 +8,8 @@ module.exports = {
     addItem,
     deleteList,
     deleteItem,
+    editPage,
+    update,
 };
 
 // render index page
@@ -103,3 +105,40 @@ async function deleteItem(req, res) {
     }
 }
 
+// render edit page
+async function editPage(req, res) {
+    try {
+      const list = await List.findById(req.params.id)
+        .populate('owner')
+        .populate('sharedList')
+        .exec();
+  
+      res.render('lists/edit', { title: 'Edit List', list });
+    } catch (err) {
+      console.error(err);
+      res.redirect('/lists');
+    }
+  }
+  
+
+// update list
+async function update(req, res) {
+    try {
+      const listId = req.params.id;
+      const updatedList = await List.findByIdAndUpdate(
+        listId,
+        {
+          title: req.body.title,
+          // Add other fields to update
+        },
+        { new: true }
+      );
+      if (!updatedList) {
+        throw new Error('List not found');
+      }
+      res.redirect(`/lists/${updatedList._id}`);
+    } catch (err) {
+      console.error(err);
+      res.redirect('/lists');
+    }
+  }
