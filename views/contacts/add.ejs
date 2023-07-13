@@ -1,5 +1,23 @@
 <%- include('../partials/header') %>
 
-<h1>Add to List</h1>
+<div class="center-container">
+    <div class="title-container">
+        <h3>Share List</h3>
+    </div>
+    <p>Which list do you want to share with "<strong><%= clickedUser.name %></strong>"?</p>
+
+    <form action="/items/<%= clickedUser._id %>/add" method="POST" class="input-form">
+        <div class="form-group">
+            <label for="list">Select List:</label>
+            <select id="list" name="list">
+                <% currentUserList.forEach(function(list) { %>
+                    <option value="<%= list._id %>"><%= list.title %></option>
+                <% }); %>
+            </select>
+        </div>
+
+        <button type="submit" class="button">Share</button>
+    </form>
+</div>
 
 <%- include('../partials/footer') %>

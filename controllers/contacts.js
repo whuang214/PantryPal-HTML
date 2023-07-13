@@ -1,4 +1,6 @@
 const User = require('../models/user');
+const List = require('../models/GroceryList');
+
 
 module.exports = {
     index,
@@ -34,7 +36,15 @@ async function searchUsers(req, res) {
 
 // render add to list page
 async function addToList(req, res) {
+  try {
     const clickedUser = await User.findById(req.params.id);
-    // console.log(clickedUser);
-    res.render('contacts/add', { title: 'Add Contact' });
+    const currentUserList = await List.find({ owner: req.user._id });
+    console.log(clickedUser);
+    console.log(currentUserList);
+    res.render('contacts/add', { title: 'Add Contact', clickedUser, currentUserList});
+
+  } catch(err) {
+    console.log(err);
+    res.redirect('/contacts');
+  }
 }
