@@ -64,22 +64,16 @@
                 <td><%= owner.email %></td>
                 <td class="role owner">Owner</td>
             </tr>
-            <% if (list.sharedList.length > 0) { %>
-                <% list.sharedList.forEach(function(userId) { %>
-                    <% if (userId !== list.owner) { %>
-                        <% const user = sharedUsers[userId]; %>
-                        <tr>
-                            <td><img src="<%= user.avatar %>" alt="Avi" class="icon"></td>
-                            <td class="name"><%= user.name %></td>
-                            <td><%= user.email %></td>
-                            <td class="role collaborator">Collaborator</td>
-                        </tr>
-                    <% } %>
-                <% }); %>
-            <% } %>
+            <% list.sharedList.forEach(function(user) { %>
+                <tr>
+                    <td><img src="<%= user.avatar %>" alt="Avi" class="icon"></td>
+                    <td class="name"><%= user.name %></td>
+                    <td><%= user.email %></td>
+                    <td class="role collaborator">Collaborator</td>
+                </tr>
+            <% }); %>
         </tbody>
     </table>
-    
     
 
 </div>

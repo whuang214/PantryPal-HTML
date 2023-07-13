@@ -6,6 +6,7 @@ module.exports = {
     index,
     searchUsers,
     addToList,
+    shareList,
 }
 
 // render add page
@@ -39,10 +40,22 @@ async function addToList(req, res) {
   try {
     const clickedUser = await User.findById(req.params.id);
     const currentUserList = await List.find({ owner: req.user._id });
-    console.log(clickedUser);
-    console.log(currentUserList);
     res.render('contacts/add', { title: 'Add Contact', clickedUser, currentUserList});
 
+  } catch(err) {
+    console.log(err);
+    res.redirect('/contacts');
+  }
+}
+
+// share list with user
+async function shareList(req, res) {
+  try {
+    const clickedUser = await User.findById(req.params.id);
+    const list = await List.findById(req.body.list);
+    list.sharedList.push(clickedUser._id);
+    await list.save();
+    res.redirect(`/lists/${list._id}`);
   } catch(err) {
     console.log(err);
     res.redirect('/contacts');

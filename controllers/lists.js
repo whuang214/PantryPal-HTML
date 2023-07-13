@@ -44,7 +44,7 @@ async function create(req, res) {
 //show list
 async function show(req, res) {
     try {
-        const list = await List.findById(req.params.id).populate('owner').populate('itemsList').exec();
+        const list = await List.findById(req.params.id).populate('owner').populate('itemsList').populate('sharedList').exec();
         // console.log('list->', list);
         res.render('lists/show', { title: 'List Details', list });
     } catch (err) {

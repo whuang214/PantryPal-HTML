@@ -6,7 +6,7 @@
     </div>
     <p>Which list do you want to share with "<strong><%= clickedUser.name %></strong>"?</p>
 
-    <form action="/items/<%= clickedUser._id %>/add" method="POST" class="input-form">
+    <form action="/contacts/<%= clickedUser._id %>/add" method="POST" class="input-form">
         <div class="form-group">
             <label for="list">Select List:</label>
             <select id="list" name="list">
