@@ -102,10 +102,12 @@ async function deleteItem(req, res) {
     await Promise.all(
       lists.map(async (list) => {
         const index = list.itemsList.indexOf(deletedItem._id);
+        // if the item is in the list, delete it
         if (index !== -1) {
           list.itemsList.splice(index, 1);
           await list.save();
         }
+        // else do nothing
       })
     );
 

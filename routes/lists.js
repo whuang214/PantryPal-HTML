@@ -20,7 +20,7 @@ router.post('/:id/items', listsCtrl.addItem);
 router.delete('/:id', listsCtrl.deleteList);
 
 // DELETE /lists/:id/items/:itemId
-// router.delete('/:id/items/:itemId', listsCtrl.deleteItem);
+router.delete('/:id/item/:itemId', listsCtrl.deleteItem);
 
 module.exports = router;
 

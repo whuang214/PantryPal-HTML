@@ -7,6 +7,7 @@ module.exports = {
     show,
     addItem,
     deleteList,
+    deleteItem,
 };
 
 // render index page
@@ -85,6 +86,20 @@ async function deleteList(req, res) {
     } catch (err) {
         console.log(err);
         res.redirect('/lists');
+    }
+}
+
+// delete item from list
+async function deleteItem(req, res) {
+    try {
+        const list = await List.findById(req.params.id);
+        const idx = list.itemsList.findIndex(item => item.id === req.params.itemId);
+        list.itemsList.splice(idx, 1);
+        await list.save();
+        res.redirect(`/lists/${list._id}`);
+    } catch (err) {
+        console.log(err);
+        res.redirect(`/lists/${list._id}`);
     }
 }
 
