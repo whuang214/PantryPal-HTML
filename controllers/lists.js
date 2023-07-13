@@ -9,19 +9,30 @@ module.exports = {
     deleteList,
 };
 
+// render index page
 async function allUserList(req, res) {
     const user = req.user;
-
+  
     if (user) {
-        const allUserGroceryLists = await List.find({ owner: user._id }).populate('owner').exec();
-        // console.log('allUserGroceryLists->', allUserGroceryLists);
-        res.render('lists/index', { title: 'My Lists', lists: allUserGroceryLists });  
-    } else {
-        console.log('not logged in');
-        res.redirect('/');
-    }
-}
+      try {
+        const ownedLists = await List.find({ owner: user._id }).populate('owner').exec();
 
+        const sharedLists = await List.find({ sharedList: { $in: [user._id] } }).populate('owner').exec();
+        console.log('sharedLists->', sharedLists);  
+        const allLists = ownedLists.concat(sharedLists);
+  
+        res.render('lists/index', { title: 'My Lists', lists: allLists });
+      } catch (err) {
+        console.log(err);
+        res.redirect('/');
+      }
+    } else {
+      console.log('not logged in');
+      res.redirect('/');
+    }
+  }
+  
+  
 // new list page
 function newlist(req, res) {
     res.render('lists/new', { title: 'Create List' });
