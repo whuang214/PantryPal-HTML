@@ -6,33 +6,38 @@
         <a href="/items/new" class="button title-button">Create Item</a>
     </div>
 
-    <table class="items-table">
-        <thead>
+    <% if (items.length > 0) { %>
+        <table class="items-table">
+          <thead>
             <tr>
-                <th></th>
-                <th>Name</th>
-                <th>Category</th>
-                <th>Price</th>
-                <th></th>
+              <th></th>
+              <th>Name</th>
+              <th>Category</th>
+              <th>Price</th>
+              <th></th>
             </tr>
-        </thead>
-        <tbody>
+          </thead>
+          <tbody>
             <% items.forEach(function(item) { %>
-                <tr>
-                    <td><%= item.icon %></td>
-                    <td><%= item.name %></td>
-                    <td><%= item.category ? item.category : 'N/A' %></td>
-                    <td><%= item.price ? item.price : 'N/A' %></td>
-                    <td>
-                        <% if (user) { %>
-                            <a href="/items/<%= item._id %>/edit" class="button">Edit</a>
-                            <a href="/items/<%= item._id %>/add" class="button title-button">Add to List</a>
-                        <% } %>
-                    </td>
-                </tr>
+              <tr>
+                <td><%= item.icon %></td>
+                <td><%= item.name %></td>
+                <td><%= item.category ? item.category : 'N/A' %></td>
+                <td><%= item.price ? item.price : 'N/A' %></td>
+                <td>
+                  <% if (user) { %>
+                    <a href="/items/<%= item._id %>/edit" class="button">Edit</a>
+                    <a href="/items/<%= item._id %>/add" class="button title-button">Add to List</a>
+                  <% } %>
+                </td>
+              </tr>
             <% }); %>
-        </tbody>
-    </table>
+          </tbody>
+        </table>
+      <% } else { %>
+        <p>Add the first item to the database.</p>
+      <% } %>
+      
 </div>
 
 <%- include('../partials/footer') %>

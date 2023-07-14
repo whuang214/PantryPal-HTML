@@ -4,16 +4,22 @@
     <div class="title-container">
         <h3>Add Item</h3>
     </div>
-    <p>Which list do you want to add "<strong><%= item.name %></strong>" to?</p>
-
+    <p>Which list do you want to add "<strong><%= item.name %></strong>" to, and how<strong> many</strong> do you want to add?</p>
+    
     <form action="/items/<%= item.id %>/add" method="POST" class="input-form">
         <div class="form-group">
             <label for="list">Select List:</label>
-            <select id="list" name="list">
+            <select id="list" name="list" required>
+                <option value="" selected disabled>Select a list</option>
                 <% lists.forEach(function(list) { %>
                     <option value="<%= list._id %>"><%= list.title %></option>
                 <% }); %>
             </select>
+        </div>
+
+        <div class="form-group">
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" min="1" value="1" required>
         </div>
 
         <button type="submit" class="button">Add</button>

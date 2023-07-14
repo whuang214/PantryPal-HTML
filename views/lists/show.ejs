@@ -7,41 +7,46 @@
         <a href="/items" class="button title-button">Add Items</a>
         <a href="/lists/<%= list._id %>/edit" class="button title-button">Options</a>
     </div>
-
+    
     <% if (list.itemsList.length > 0) { %>
         <table class="items-table">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>Name</th>
-                    <th>Category</th>
-                    <th>Price</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <% list.itemsList.forEach(function(item) { %>
-                    <tr>
-                        <td>
-                            <% if (item.icon) { %>
-                                <img src="<%= item.icon %>" alt="Item Icon" class="icon">
-                            <% } %>
-                        </td>
-                        <td><%= item.name %></td>
-                        <td><%= item.category ? item.category : 'N/A' %></td>
-                        <td><%= item.price ? item.price : 'N/A' %></td>
-                        <td>
-                            <form action="/lists/<%= list._id %>/item/<%= item._id %>?_method=DELETE" method="POST" onsubmit="return confirm('Are you sure you want to delete this item from the list?')">
-                                <button type="submit" class="button">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
-                <% }); %>
-            </tbody>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Name</th>
+              <th>Category</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% list.itemsList.forEach(function(itemObject) { %>
+              <tr>
+                <td>
+                  <% if (itemObject.item.icon) { %>
+                    <img src="<%= itemObject.item.icon %>" alt="Item Icon" class="icon">
+                  <% } %>
+                </td>
+                <td><%= itemObject.item.name %></td>
+                <td><%= itemObject.item.category ? itemObject.item.category : 'N/A' %></td>
+                <td><%= itemObject.item.price ? itemObject.item.price : 'N/A' %></td>
+                <td><%= itemObject.quantity %></td>
+                <td>
+                  <form action="/lists/<%= list._id %>/item/<%= itemObject.item._id %>?_method=DELETE" method="POST" onsubmit="return confirm('Are you sure you want to delete this item from the list?')">
+                    <button type="submit" class="button">Delete</button>
+                  </form>
+                </td>
+              </tr>
+            <% }); %>
+          </tbody>
         </table>
-    <% } else { %>
+      <% } else { %>
         <p>Add your first item to the list.</p>
-    <% } %>
+      <% } %>
+      
+      
+    
 
 </div>
 

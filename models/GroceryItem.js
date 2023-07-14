@@ -2,10 +2,6 @@ const mongoose = require('mongoose');
 
 const GroceryItemSchema = new mongoose.Schema({
     name: { type: String, required: true },
-    groceryList: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'GroceryList' // Reference the GroceryItem model
-    },
     category: {
         type: String,
         /* enum: [

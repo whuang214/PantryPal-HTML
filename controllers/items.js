@@ -54,16 +54,29 @@ async function addItem(req, res) {
   try {
     const item = await Item.findById(req.params.id);
     const list = await List.findById(req.body.list);
-    // console.log("item->", item);
-    // console.log("list->", list);
-    list.itemsList.push(item);
+
+    if (!item || !list) {
+      throw new Error("Item or list not found");
+    }
+
+    const quantity = req.body.quantity
+
+    // Create an object with item and quantity
+    const listItem = {
+      item: item._id,
+      quantity: quantity
+    };
+
+    list.itemsList.push(listItem);
     await list.save();
+    
     res.redirect(`/lists/${list._id}`);
   } catch (err) {
-    console.log(err);
+    console.error(err);
     res.redirect("/items");
   }
 }
+
 
 // edit item page
 async function editItem(req, res) {

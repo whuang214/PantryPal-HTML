@@ -28,6 +28,7 @@ async function allUserList(req, res) {
         .exec();
       // console.log("sharedLists->", sharedLists);
       const allLists = ownedLists.concat(sharedLists);
+      // console.log("allLists->", allLists);
 
       res.render("lists/index", { title: "My Lists", lists: allLists });
     } catch (err) {
@@ -63,15 +64,19 @@ async function create(req, res) {
 async function show(req, res) {
   try {
     const list = await List.findById(req.params.id)
-      .populate("owner")
-      .populate("itemsList")
-      .populate("sharedList")
+      .populate({
+        path: 'itemsList.item',
+        model: 'GroceryItem'
+      })
+      .populate('owner')
+      .populate('sharedList')
       .exec();
+
     // console.log('list->', list);
-    res.render("lists/show", { title: "List Details", list });
+    res.render('lists/show', { title: 'List Details', list });
   } catch (err) {
     console.log(err);
-    res.redirect("/lists");
+    res.redirect('/lists');
   }
 }
 

@@ -4,17 +4,28 @@ const GroceryListSchema = new mongoose.Schema({
     title: String,
     owner: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User' // Reference the User model
+        ref: 'User', // Reference the User model
+        required: true
     },
-    isShared: Boolean,
     sharedList: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User' // Reference the User model
+        ref: 'User', // Reference the User model
+        default: []
     }],
-    itemsList: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'GroceryItem' // Reference the GroceryItem model
-    }]
+    itemsList: {
+        type: [{
+            _id: false,
+            item: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'GroceryItem'
+            },
+            quantity: {
+                type: Number,
+                default: 1
+            }
+        }],
+        default: []
+    }
 }, { timestamps: true });
 
 module.exports = mongoose.model('GroceryList', GroceryListSchema);
