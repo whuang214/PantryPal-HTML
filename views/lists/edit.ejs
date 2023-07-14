@@ -6,15 +6,16 @@
     </div>
 
     <% if (user._id.equals(list.owner._id)) { %>
-        <form action="/lists/<%= list._id %>/edit" method="POST" class="input-form">
+        <form action="/lists/<%= list._id %>/edit?_method=PUT" method="POST" class="input-form">
             <div class="form-group">
                 <label for="listName">List Name:</label>
-                <input type="text" id="listName" name="listName" value="<%= list.title %>">
+                <input type="text" id="listName" name="title" value="<%= list.title %>">
             </div>
-
+    
             <button type="submit" class="button">Update</button>
         </form>
     <% } %>
+    
 
     <div class="title-container">
         <h3>Shared List</h3>
@@ -59,7 +60,7 @@
         </tbody>
     </table>
     <div class="title-container">
-        <a href="/contacts" class="button">Add Collaberator</a>
+        <a href="/contacts" class="button">Add Collaborator</a>
     </div>
 
 </div>
