@@ -41,7 +41,15 @@ async function create(req, res) {
 async function addItemPage(req, res) {
   try {
     const item = await Item.findById(req.params.id);
-    const lists = await List.find({ owner: req.user._id });
+    const user = req.user;
+
+    let lists = [];
+    if (user) {
+      const ownedLists = await List.find({ owner: user._id });
+      const sharedLists = await List.find({ sharedList: { $in: [user._id] } });
+      lists = ownedLists.concat(sharedLists);
+    }
+
     res.render("items/add", { title: "Add to List", item, lists });
   } catch (err) {
     console.log(err);
@@ -52,30 +60,42 @@ async function addItemPage(req, res) {
 // add item to list
 async function addItem(req, res) {
   try {
-    const item = await Item.findById(req.params.id);
-    const list = await List.findById(req.body.list);
+    const itemId = req.params.id;
+    const listId = req.body.list;
+    const quantity = req.body.quantity;
+
+    const item = await Item.findById(itemId);
+    const list = await List.findById(listId);
 
     if (!item || !list) {
       throw new Error("Item or list not found");
     }
 
-    const quantity = req.body.quantity
+    // Check if the item is already in the list
+    const existingItem = list.itemsList.find(
+      (listItem) => listItem.item.toString() === itemId
+    );
 
-    // Create an object with item and quantity
-    const listItem = {
-      item: item._id,
-      quantity: quantity
-    };
+    if (existingItem) {
+      // Item already exists in the list, update its quantity
+      existingItem.quantity += Number(quantity);
+    } else {
+      // Item doesn't exist in the list, add it
+      const listItem = {
+        item: item._id,
+        quantity: Number(quantity)
+      };
+      list.itemsList.push(listItem);
+    }
 
-    list.itemsList.push(listItem);
     await list.save();
-    
-    res.redirect(`/lists/${list._id}`);
-  } catch (err) {
-    console.error(err);
+
     res.redirect("/items");
+  } catch (err) {
+    res.send(err);
   }
 }
+
 
 
 // edit item page
