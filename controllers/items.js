@@ -107,20 +107,17 @@ async function updateItem(req, res) {
 // DELETE item
 async function deleteItem(req, res) {
   try {
-    // delete item from the item database
+    // Delete item from the item database
     const deletedItem = await Item.findByIdAndDelete(req.params.id);
 
-    // go through all the list and delete the item from the list
-    const lists = await List.find({ itemsList: deletedItem._id });
+    // Go through all the lists and remove the item from the itemsList array
+    const lists = await List.find({ "itemsList.item": deletedItem._id });
     await Promise.all(
       lists.map(async (list) => {
-        const index = list.itemsList.indexOf(deletedItem._id);
-        // if the item is in the list, delete it
-        if (index !== -1) {
-          list.itemsList.splice(index, 1);
-          await list.save();
-        }
-        // else do nothing
+        list.itemsList = list.itemsList.filter(
+          (item) => !item.item.equals(deletedItem._id)
+        );
+        await list.save();
       })
     );
 
@@ -130,3 +127,4 @@ async function deleteItem(req, res) {
     res.redirect("/items");
   }
 }
+

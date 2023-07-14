@@ -167,7 +167,7 @@ async function update(req, res) {
     if (!updatedList) {
       throw new Error("List not found");
     }
-    res.redirect(`/lists/${updatedList._id}`);
+    res.redirect(`/lists/${updatedList._id}/edit`);
   } catch (err) {
     console.error(err);
     res.redirect("/lists");

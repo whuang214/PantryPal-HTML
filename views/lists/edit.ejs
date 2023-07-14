@@ -1,11 +1,13 @@
 <%- include('../partials/header') %>
 
 <div class="center-container">
-    <div class="title-container">
-        <h3>Edit List</h3>
-    </div>
-
+    
     <% if (user._id.equals(list.owner._id)) { %>
+
+        <div class="title-container">
+            <h3>Edit List</h3>
+        </div>
+
         <form action="/lists/<%= list._id %>/edit?_method=PUT" method="POST" class="input-form">
             <div class="form-group">
                 <label for="listName">List Name:</label>
