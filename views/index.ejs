@@ -1,10 +1,12 @@
 <%- include('./partials/header') %>
 
-<% if (user) { %>
+<div class="home-container">
+  <% if (user) { %>
     <h1>Welcome <%= user.name.split(' ')[0] %></h1>
-<% } else { %>
+  <% } else { %>
     <h1>Welcome Guest</h1>
     <a href="/auth/google" class="login">Log In</a>
-<% } %>
+  <% } %>
+</div>
 
 <%- include('./partials/footer') %>
