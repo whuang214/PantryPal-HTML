@@ -25,6 +25,7 @@ To run the deployed application, visit [this](https://colorful-coveralls-fish.cy
 
 Here are the planned next steps for Pantry Pal:
 
+- Add a filter feature to the items database to allow users to filter items by category.
 - Implement collaborator permissions to allow only the list owner to manage list membership, preventing unauthorized users from adding extra users.
 - Include a "Change Ownership" button on the list detail page to enable the list owner to  transfer ownership within shared lists.
 - Add a feature to remove all items from the grocery list at once for convenient list clearing.

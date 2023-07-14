@@ -17,7 +17,7 @@ const GroceryListSchema = new mongoose.Schema({
             _id: false,
             item: {
                 type: mongoose.Schema.Types.ObjectId,
-                ref: 'GroceryItem'
+                ref: 'GroceryItem' // Reference the GroceryItem model
             },
             quantity: {
                 type: Number,
