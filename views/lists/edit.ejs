@@ -41,9 +41,9 @@
                 <td><%= owner.email %></td>
                 <td class="role owner">Owner</td>
                 <td>
-                    <!-- <form action="?_method=PUT" method="POST" onsubmit="return confirm('Are you sure you want to change ownership?')">
+                    <form action="?_method=PUT" method="POST" onsubmit="return confirm('Are you sure you want to change ownership?')">
                         <button type="submit" class="button delete-button">Change</button>
-                    </form> -->
+                    </form>
                 </td>
             </tr>
             <% list.sharedList.forEach(function(sharedUser) { %>
