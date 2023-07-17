@@ -23,7 +23,7 @@ To run the deployed application, visit [this](https://colorful-coveralls-fish.cy
 
 ## Next Steps
 
-Here are the planned next steps for Pantry Pal:
+Here are the planned next steps for PantryPal:
 
 - Add a filter feature to the items database to allow users to filter items by category.
 - Implement collaborator permissions to allow only the list owner to manage list membership, preventing unauthorized users from adding extra users.
