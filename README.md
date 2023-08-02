@@ -16,6 +16,7 @@ PantryPal is a grocery list management application that helps you keep track of 
 - HTML
 - CSS
 - JavaScript
+- EJS
 
 ## Getting Started
 
