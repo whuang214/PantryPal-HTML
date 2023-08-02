@@ -1,6 +1,6 @@
 # PantryPal
 
-PantryPal is a grocery list management application that helps you keep track of your shopping needs and streamline your grocery shopping experience. With Pantry Pal, you can create and manage multiple grocery lists, add and remove items, and even share lists with others for collaborative shopping.
+PantryPal is a grocery list management application that helps you keep track of your shopping needs and streamline your grocery shopping experience. With PantryPal, you can create and manage multiple grocery lists, add and remove items, and even share lists with others for collaborative shopping.
 
 ## Screenshots
 
