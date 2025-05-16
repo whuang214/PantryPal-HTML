@@ -1,4 +1,4 @@
-# PantryPal (OLD)
+# PantryPal (HTML Version)
 
 **Note: This version of PantryPal is no longer actively maintained and will be replaced with an improved version built using React.**
 
